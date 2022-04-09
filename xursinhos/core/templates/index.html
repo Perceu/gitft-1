@@ -1,0 +1,67 @@
+{% extends "base_templates/base.html" %}
+{% load static %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light u-container">
+    <div class="container-fluid ">
+        <a class="navbar-brand" href="#">
+            <i class="fa-solid fa-bars"></i>
+        </a>
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll u-menu" style="--bs-scroll-height: 100px;">
+            <li class="nav-item mr-4">
+                <img src="{% static 'logo.png'%}" alt="Logo" class="d-inline-block align-text-top">
+            </li>
+            <li class="nav-item">
+                <form class="d-flex">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Pesquisar 10.495 Videos" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                      </div>
+                </form>
+            </li>
+            <li class="nav-item">
+                <p class="u-propaganda">
+                    O MELHOR <span class="t-red">SITE</span> DE URSINHOS GRATIS
+                </p>
+            </li>
+        </ul>
+        <button class="u-button">
+            Associe-se GRATUITAMENTE!
+        </button>
+        <a href="/admin" class="u-login">
+            Log in
+        </a>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        {% for _ in loop %}
+            {% for img in fotos %}
+            <div class="col-lg-2 col-md-4 col-sm-12">
+                <div class="card u-thumb">
+                    <img src="{{img.imagem.url}}" class="card-img-top rounded-0" alt="{{img.descricao}}">
+                    <div class="card-body u-thumb-body">
+                    <p class="card-text text-center">{{img.descricao}}</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between u-thumb-footer">
+                        <span>
+                            <a href="#" class="u-thumb-link">
+                                {{img.publisher}}
+                            </a> - 
+                        </span>
+                        <span class="text-muted u-views">
+                            {{img.views}} Visualizações
+                        </span> - 
+                        <span class="badge bg-secondary">
+                            {{img.duracao}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
